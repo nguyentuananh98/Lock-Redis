@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   app:
-    image: anhnt10/demo:latest
+    image: anhnt10/transfer-money-ci-cd:latest
     ports:
       - "8080:8080"
     restart: always
