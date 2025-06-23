@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  app:
+    image: anhnt10/demo:latest
+    ports:
+      - "8080:8080"
+    container_name: transfer-container
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DB: bank
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - mysql
+      - redis
+
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: bank
+    ports:
+      - "3306:3306"
+    container_name: mysql-container
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    container_name: redis-container
