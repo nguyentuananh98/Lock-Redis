@@ -4,6 +4,9 @@ FROM openjdk:17-jdk-slim
 # 2. Tạo thư mục làm việc
 WORKDIR /app
 
+# Cài netcat để wait-for-it.sh hoạt động
+RUN apt-get update && apt-get install -y netcat
+
 # 3. Copy app jar và wait-for-it script vào container
 COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
 COPY wait-for-it.sh /wait-for-it.sh
@@ -19,4 +22,5 @@ ENV MYSQL_HOST=mysql
 ENV MYSQL_PORT=3306
 
 # 6. Chờ MySQL rồi mới chạy app
-ENTRYPOINT ["/wait-for-it.sh", "mysql:3306", "--", "java", "-jar", "app.jar"]
+ENTRYPOINT sh -c "/wait-for-it.sh $MYSQL_HOST:$MYSQL_PORT -- java -jar app.jar"
+
