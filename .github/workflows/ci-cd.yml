@@ -25,6 +25,7 @@ jobs:
 
       - name: Build with maven
         run: mvn clean install
+        working-directory: ./demo
 
       - name: Docker build and push to dockerhub
         run: |
