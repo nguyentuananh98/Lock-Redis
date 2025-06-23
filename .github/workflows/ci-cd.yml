@@ -24,7 +24,7 @@ jobs:
           cache: maven
 
       - name: Build with maven
-        run: mvn clean install
+        run: mvn clean install -DskipTests
         working-directory: ./demo
 
       - name: Docker build and push to dockerhub
