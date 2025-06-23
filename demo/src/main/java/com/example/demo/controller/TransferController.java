@@ -23,4 +23,9 @@ public class TransferController {
     public ResponseEntity<TransferResponse> transferMoney(@RequestBody TransferRequest transferRequest) {
         return new ResponseEntity<>(transferService.transfer(transferRequest), HttpStatus.OK);
     }
+
+    @PostMapping("/deposit")
+    public ResponseEntity<String> deposit() {
+        return new ResponseEntity<>("abc", HttpStatus.OK);
+    }
 }
