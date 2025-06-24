@@ -26,6 +26,6 @@ public class TransferController {
 
     @PostMapping("/deposit")
     public ResponseEntity<String> deposit() {
-        return new ResponseEntity<>("nguyen tuan anh deposit", HttpStatus.OK);
+        return new ResponseEntity<>("luong vinh loi deposit", HttpStatus.OK);
     }
 }
